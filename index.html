@@ -1,218 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polaroid Store</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .navbar {
-      background-color: #ffc0cb;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .navbar button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      border: none;
-      background-color: #ffb6c1;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .content {
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    .product {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .product img {
-      max-width: 200px;
-      max-height: 200px;
-      border-radius: 5px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    .form-group textarea {
-      height: 100px;
-    }
-
-    .form-group button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #ffb6c1;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polaroid Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #ffd700;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            padding: 5px 10px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .product-item {
+            width: 45%;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .product-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        form input[type="submit"] {
+            background-color: #ffd700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div class="navbar">
+
+<nav>
     <button onclick="showHome()">Home</button>
     <button onclick="showProducts()">Products</button>
-    <button onclick="showWishlist()">Wishlist<span id="wishlistCount"></span></button>
-    <button onclick="showCart()">Shopping Cart<span id="cartCount"></span></button>
+    <button onclick="showWishlist()">Wishlist</button>
+    <button onclick="showCart()">Shopping Cart</button>
     <button onclick="showContact()">Contact Us</button>
-  </div>
-  <div class="container" id="home" style="display:none;">
-    <div class="content">
-      <h2>About Polaroids</h2>
-      <p>Information about Polaroids and some images can go here.</p>
+</nav>
+
+<div id="home" class="content">
+    <h1>About Polaroids</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in dui consectetur ultricies. Nulla facilisi.</p>
+    <img src="polaroid1.jpg" alt="Polaroid Image">
+    <img src="polaroid2.jpg" alt="Polaroid Image">
+    <img src="polaroid3.jpg" alt="Polaroid Image">
+</div>
+
+<div id="products" class="content" style="display: none;">
+    <h1>Products</h1>
+    <div class="product">
+        <div class="product-item">
+            <img src="polaroid1.jpg" alt="Polaroid Image">
+            <p>$10</p>
+            <button onclick="addToWishlist('Polaroid 1')">Add to Wishlist</button>
+            <button onclick="addToCart('Polaroid 1', 10)">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="polaroid2.jpg" alt="Polaroid Image">
+            <p>$15</p>
+            <button onclick="addToWishlist('Polaroid 2')">Add to Wishlist</button>
+            <button onclick="addToCart('Polaroid 2', 15)">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="polaroid3.jpg" alt="Polaroid Image">
+            <p>$20</p>
+            <button onclick="addToWishlist('Polaroid 3')">Add to Wishlist</button>
+            <button onclick="addToCart('Polaroid 3', 20)">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="polaroid4.jpg" alt="Polaroid Image">
+            <p>$25</p>
+            <button onclick="addToWishlist('Polaroid 4')">Add to Wishlist</button>
+            <button onclick="addToCart('Polaroid 4', 25)">Add to Cart</button>
+        </div>
     </div>
-  </div>
-  <div class="container" id="products" style="display:none;">
-    <div class="content">
-      <h2>Products</h2>
-      <div class="product">
-        <img src="polaroid1.jpg" alt="Polaroid 1">
-        <div>
-          <h3>Polaroid 1</h3>
-          <p>$50</p>
-          <button>Add to Wishlist</button>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product">
-        <img src="polaroid2.jpg" alt="Polaroid 2">
-        <div>
-          <h3>Polaroid 2</h3>
-          <p>$60</p>
-          <button>Add to Wishlist</button>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product">
-        <img src="polaroid3.jpg" alt="Polaroid 3">
-        <div>
-          <h3>Polaroid 3</h3>
-          <p>$70</p>
-          <button>Add to Wishlist</button>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product">
-        <img src="polaroid4.jpg" alt="Polaroid 4">
-        <div>
-          <h3>Polaroid 4</h3>
-          <p>$80</p>
-          <button>Add to Wishlist</button>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container" id="wishlist" style="display:none;">
-    <div class="content">
-      <h2>Wishlist</h2>
-      <!-- Wishlist items will be dynamically displayed here -->
-    </div>
-  </div>
-  <div class="container" id="cart" style="display:none;">
-    <div class="content">
-      <h2>Shopping Cart</h2>
-      <!-- Cart items will be dynamically displayed here -->
-      <p>Total: $<span id="cartTotal">0</span></p>
-    </div>
-  </div>
-  <div class="container" id="contact" style="display:none;">
-    <div class="content">
-      <h2>Contact Us</h2>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </div>
-  <script>
+</div>
+
+<div id="wishlist" class="content" style="display: none;">
+    <h1>Wishlist</h1>
+    <p id="wishlistCount">0 items wishlisted</p>
+    <div id="wishlistItems"></div>
+</div>
+
+<div id="cart" class="content" style="display: none;">
+    <h1>Shopping Cart</h1>
+    <div id="cartItems"></div>
+    <p>Total: $<span id="cartTotal">0</span></p>
+</div>
+
+<div id="contact" class="content" style="display: none;">
+    <h1>Contact Us</h1>
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="text" placeholder="Your Email">
+        <textarea placeholder="Your Message"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+    let wishlist = [];
+    let cart = [];
+
     function showHome() {
-      hideAll();
-      document.getElementById("home").style.display = "block";
+        hideAll();
+        document.getElementById('home').style.display = 'block';
     }
 
     function showProducts() {
-      hideAll();
-      document.getElementById("products").style.display = "block";
+        hideAll();
+        document.getElementById('products').style.display = 'block';
     }
 
     function showWishlist() {
-      hideAll();
-      document.getElementById("wishlist").style.display = "block";
+        hideAll();
+        document.getElementById('wishlist').style.display = 'block';
+        document.getElementById('wishlistCount').innerText = wishlist.length + " items wishlisted";
+        document.getElementById('wishlistItems').innerHTML = wishlist.map(item => "<p>" + item + "</p>").join("");
     }
 
     function showCart() {
-      hideAll();
-      document.getElementById("cart").style.display = "block";
+        hideAll();
+        document.getElementById('cart').style.display = 'block';
+        let total = cart.reduce((acc, item) => acc + item.price, 0);
+        document.getElementById('cartTotal').innerText = total;
+        document.getElementById('cartItems').innerHTML = cart.map(item => "<p>" + item.name + " - $" + item.price + "</p>").join("");
     }
 
     function showContact() {
-      hideAll();
-      document.getElementById("contact").style.display = "block";
+        hideAll();
+        document.getElementById('contact').style.display = 'block';
     }
 
     function hideAll() {
-      document.getElementById("home").style.display = "none";
-      document.getElementById("products").style.display = "none";
-      document.getElementById("wishlist").style.display = "none";
-      document.getElementById("cart").style.display = "none";
-      document.getElementById("contact").style.display = "none";
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('wishlist').style.display = 'none';
+        document.getElementById('cart').style.display = 'none';
+        document.getElementById('contact').style.display = 'none';
     }
 
-    // Dummy function to submit contact form (for demonstration purpose)
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      alert("Your message has been submitted!");
-      document.getElementById("contactForm").reset();
-    });
-  </script>
+    function addToWishlist(item) {
+        wishlist.push(item);
+        alert("Item added to wishlist: " + item);
+    }
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        alert("Item added to cart: " + name);
+    }
+</script>
+
 </body>
 </html>
