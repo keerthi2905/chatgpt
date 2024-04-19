@@ -1,176 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polaroid Store</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-    color: #333;
-  }
-  .navbar {
-    background-color: #f0f0f0;
-    padding: 15px;
-  }
-  .navbar button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-right: 15px;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .product {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .product-item {
-    width: calc(25% - 20px);
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polaroid Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #89cff0;
+      padding: 10px;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      margin: 0 5px;
+    }
+
+    nav a:hover {
+      background-color: #ccc;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .product-card {
+      width: 200px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .product-card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .product-card p {
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #89cff0;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #6fbde8;
+    }
+
+    footer {
+      background-color: #89cff0;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-<div class="navbar">
-  <button onclick="showHome()">Home</button>
-  <button onclick="showProducts()">Products</button>
-  <button onclick="showWishlist()">Wishlist<span id="wishlistCount"></span></button>
-  <button onclick="showCart()">Shopping Cart<span id="cartCount"></span></button>
-  <button onclick="showReviews()">Reviews</button>
-  <button onclick="showContact()">Contact Us</button>
-</div>
-<div class="container" id="content">
-  <div id="home" style="display:none;">
-    <h1>About Polaroids</h1>
-    <p>Polaroids are instant cameras that produce self-developing photos. They are popular for their nostalgic appeal and unique photo output.</p>
-    <img src="polaroid1.jpg" alt="Polaroid 1">
-    <img src="polaroid2.jpg" alt="Polaroid 2">
-  </div>
-  <div id="products" style="display:none;">
-    <h1>Products</h1>
-    <div class="product">
-      <div class="product-item">
-        <img src="product1.jpg" alt="Product 1">
-        <h2>Product 1</h2>
-        <p>$50</p>
-        <button onclick="addToWishlist('Product 1')">Add to Wishlist</button>
-        <button onclick="addToCart('Product 1')">Add to Cart</button>
-      </div>
-      <div class="product-item">
-        <img src="product2.jpg" alt="Product 2">
-        <h2>Product 2</h2>
-        <p>$60</p>
-        <button onclick="addToWishlist('Product 2')">Add to Wishlist</button>
-        <button onclick="addToCart('Product 2')">Add to Cart</button>
-      </div>
-      <div class="product-item">
-        <img src="product3.jpg" alt="Product 3">
-        <h2>Product 3</h2>
-        <p>$70</p>
-        <button onclick="addToWishlist('Product 3')">Add to Wishlist</button>
-        <button onclick="addToCart('Product 3')">Add to Cart</button>
-      </div>
-      <div class="product-item">
-        <img src="product4.jpg" alt="Product 4">
-        <h2>Product 4</h2>
-        <p>$80</p>
-        <button onclick="addToWishlist('Product 4')">Add to Wishlist</button>
-        <button onclick="addToCart('Product 4')">Add to Cart</button>
+  <header>
+    <div class="container">
+      <h1>Polaroid Store</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#product">Product</a>
+        <a href="#wishlist">Wishlist</a>
+        <a href="#cart">Shopping Cart</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home">
+    <div class="container">
+      <h2>About Polaroids</h2>
+      <p>Polaroids are instant cameras that produce self-developing photos. They offer a unique and nostalgic way to capture moments.</p>
+      <div class="images">
+        <img src="polaroid1.jpg" alt="Polaroid 1">
+        <img src="polaroid2.jpg" alt="Polaroid 2">
+        <img src="polaroid3.jpg" alt="Polaroid 3">
       </div>
     </div>
-  </div>
-  <div id="wishlist" style="display:none;">
-    <h1>Wishlist</h1>
-    <p>No items in wishlist</p>
-  </div>
-  <div id="cart" style="display:none;">
-    <h1>Shopping Cart</h1>
-    <p>No items in cart</p>
-  </div>
-  <div id="reviews" style="display:none;">
-    <h1>Customer Reviews</h1>
-    <p>No reviews yet</p>
-  </div>
-  <div id="contact" style="display:none;">
-    <h1>Contact Us</h1>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name"><br><br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email"><br><br>
-      <label for="message">Message:</label><br>
-      <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-</div>
+  </section>
 
-<script>
-  let wishlist = [];
-  let cart = [];
+  <section id="product">
+    <div class="container">
+      <h2>Our Products</h2>
+      <div class="product">
+        <div class="product-card">
+          <img src="product1.jpg" alt="Product 1">
+          <h3>Classic Polaroid</h3>
+          <p>$50</p>
+          <button class="btn add-to-wishlist">Add to Wishlist</button>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="product2.jpg" alt="Product 2">
+          <h3>Colorful Polaroid</h3>
+          <p>$60</p>
+          <button class="btn add-to-wishlist">Add to Wishlist</button>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="product3.jpg" alt="Product 3">
+          <h3>Vintage Polaroid</h3>
+          <p>$70</p>
+          <button class="btn add-to-wishlist">Add to Wishlist</button>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="product4.jpg" alt="Product 4">
+          <h3>Modern Polaroid</h3>
+          <p>$80</p>
+          <button class="btn add-to-wishlist">Add to Wishlist</button>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  function showHome() {
-    hideAll();
-    document.getElementById('home').style.display = 'block';
-  }
+  <section id="wishlist">
+    <div class="container">
+      <h2>Wishlist</h2>
+      <p>Total Items: <span id="wishlist-count">0</span></p>
+      <div id="wishlist-items"></div>
+    </div>
+  </section>
 
-  function showProducts() {
-    hideAll();
-    document.getElementById('products').style.display = 'block';
-  }
+  <section id="cart">
+    <div class="container">
+      <h2>Shopping Cart</h2>
+      <div id="cart-items"></div>
+    </div>
+  </section>
 
-  function showWishlist() {
-    hideAll();
-    document.getElementById('wishlist').style.display = 'block';
-    document.getElementById('wishlistCount').innerText = wishlist.length ? ` (${wishlist.length})` : '';
-  }
+  <section id="reviews">
+    <div class="container">
+      <h2>Customer Reviews</h2>
+      <p>No reviews yet.</p>
+    </div>
+  </section>
 
-  function showCart() {
-    hideAll();
-    document.getElementById('cart').style.display = 'block';
-    document.getElementById('cartCount').innerText = cart.length ? ` (${cart.length})` : '';
-  }
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </section>
 
-  function showReviews() {
-    hideAll();
-    document.getElementById('reviews').style.display = 'block';
-  }
+  <footer>
+    <p>&copy; 2024 Polaroid Store. All rights reserved.</p>
+  </footer>
 
-  function showContact() {
-    hideAll();
-    document.getElementById('contact').style.display = 'block';
-  }
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dummy function to simulate adding to wishlist
+      const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist');
+      addToWishlistButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const countElement = document.getElementById('wishlist-count');
+          let count = parseInt(countElement.innerText);
+          count++;
+          countElement.innerText = count;
 
-  function hideAll() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('products').style.display = 'none';
-    document.getElementById('wishlist').style.display = 'none';
-    document.getElementById('cart').style.display = 'none';
-    document.getElementById('reviews').style.display = 'none';
-    document.getElementById('contact').style.display = 'none';
-  }
+          const productName = this.parentElement.querySelector('h3').innerText;
+          const wishlistItems = document.getElementById('wishlist-items');
+          const item = document.createElement('p');
+          item.innerText = productName;
+          wishlistItems.appendChild(item);
+        });
+      });
 
-  function addToWishlist(product) {
-    wishlist.push(product);
-    showWishlist();
-  }
-
-  function addToCart(product) {
-    cart.push(product);
-    showCart();
-  }
-</script>
+      // Dummy function to simulate adding to cart
+      const addToCartButtons = document.querySelectorAll('.add-to-cart');
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const productName = this.parentElement.querySelector('h3').innerText;
+          const cartItems = document.getElementById('cart-items');
+          const item = document.createElement('p');
+          item.innerText = productName;
+          cartItems.appendChild(item);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
