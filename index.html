@@ -5,151 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polaroid Store</title>
     <style>
-        /* Basic Styles */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+            background-color: #66cccc;
+            padding: 20px;
             text-align: center;
+            color: #fff;
         }
         nav {
-            background-color: #555;
-            padding: 10px 0;
+            background-color: #ff9999;
+            padding: 10px;
             text-align: center;
         }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-        nav ul li a {
-            color: #fff;
+        nav a {
             text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+            font-weight: bold;
         }
         .container {
             max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        /* Product Styles */
-        .product {
+            margin: 20px auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
         }
         .product img {
-            max-width: 100px;
-            height: auto;
+            max-width: 100%;
+            border-radius: 5px;
         }
-        .product-info {
-            flex: 1;
-            margin-left: 20px;
+        .product h2 {
+            margin-top: 10px;
         }
-        .product-info h3 {
-            margin: 0;
-        }
-        .product-info p {
-            margin: 5px 0;
-        }
-        /* Wishlist and Cart Styles */
-        .wishlist, .cart {
-            list-style-type: none;
-            padding: 0;
-        }
-        /* Reviews Styles */
-        .review {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-        }
-        /* Contact Styles */
-        .contact {
+        footer {
+            background-color: #66cccc;
+            padding: 20px;
             text-align: center;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Polaroid Store</h1>
+        <h1>Welcome to Polaroid Store</h1>
     </header>
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#product">Product</a></li>
-            <li><a href="#wishlist">Wishlist</a></li>
-            <li><a href="#cart">Shopping Cart</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
+        <a href="#" id="home-tab">Home</a>
+        <a href="#" id="product-tab">Product</a>
+        <a href="#" id="wishlist-tab">Wishlist</a>
+        <a href="#" id="cart-tab">Shopping Cart</a>
+        <a href="#" id="reviews-tab">Reviews</a>
+        <a href="#" id="contact-tab">Contact Us</a>
     </nav>
-    <div class="container">
-        <section id="home">
-            <h2>Welcome to our Polaroid Store!</h2>
-            <p>We offer a variety of Polaroid sizes to capture your memories.</p>
-        </section>
-        <section id="product">
-            <h2>Our Products</h2>
-            <div class="product">
-                <img src="polaroid1.jpg" alt="Polaroid 1">
-                <div class="product-info">
-                    <h3>Polaroid 1</h3>
-                    <p>Price: $10</p>
-                    <button onclick="addToWishlist('Polaroid 1')">Add to Wishlist</button>
-                    <button onclick="addToCart('Polaroid 1')">Add to Cart</button>
-                </div>
-            </div>
-            <!-- Add more products here -->
-        </section>
-        <section id="wishlist">
-            <h2>Wishlist</h2>
-            <ul class="wishlist" id="wishlist-items"></ul>
-        </section>
-        <section id="cart">
-            <h2>Shopping Cart</h2>
-            <ul class="cart" id="cart-items"></ul>
-        </section>
-        <section id="reviews">
-            <h2>Customer Reviews</h2>
-            <div class="review">
-                <h3>Great Quality!</h3>
-                <p>This store has the best Polaroids. I love the quality of the pictures!</p>
-            </div>
-            <!-- Add more reviews here -->
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <div class="contact">
-                <p>Email: info@polaroidstore.com</p>
-                <p>Phone: 123-456-7890</p>
-            </div>
-        </section>
+    <div id="content">
+        <!-- Content will be dynamically loaded here -->
     </div>
+    <footer>
+        &copy; 2024 Polaroid Store
+    </footer>
+
     <script>
-        // Wishlist functionality
-        function addToWishlist(product) {
-            const wishlist = document.getElementById('wishlist-items');
-            const li = document.createElement('li');
-            li.textContent = product;
-            wishlist.appendChild(li);
+        // Sample products data
+        const products = [
+            { id: 1, name: 'Polaroid Camera 1', price: 50, image: 'polaroid1.jpg' },
+            { id: 2, name: 'Polaroid Camera 2', price: 60, image: 'polaroid2.jpg' },
+            { id: 3, name: 'Polaroid Camera 3', price: 70, image: 'polaroid3.jpg' },
+            { id: 4, name: 'Polaroid Camera 4', price: 80, image: 'polaroid4.jpg' },
+            { id: 5, name: 'Polaroid Camera 5', price: 90, image: 'polaroid5.jpg' },
+            { id: 6, name: 'Polaroid Camera 6', price: 100, image: 'polaroid6.jpg' },
+            { id: 7, name: 'Polaroid Camera 7', price: 110, image: 'polaroid7.jpg' },
+            { id: 8, name: 'Polaroid Camera 8', price: 120, image: 'polaroid8.jpg' },
+            { id: 9, name: 'Polaroid Camera 9', price: 130, image: 'polaroid9.jpg' },
+            { id: 10, name: 'Polaroid Camera 10', price: 140, image: 'polaroid10.jpg' },
+        ];
+
+        // Function to display products
+        function displayProducts() {
+            const content = document.getElementById('content');
+            content.innerHTML = '<div class="container">' +
+                                    products.map(product =>
+                                        '<div class="product">' +
+                                            `<img src="${product.image}" alt="${product.name}">` +
+                                            `<h2>${product.name}</h2>` +
+                                            `<p>$${product.price}</p>` +
+                                            '<button onclick="addToCart()">Add to Cart</button>' +
+                                            '<button onclick="addToWishlist()">Add to Wishlist</button>' +
+                                        '</div>'
+                                    ).join('') +
+                                '</div>';
         }
 
-        // Cart functionality
-        function addToCart(product) {
-            const cart = document.getElementById('cart-items');
-            const li = document.createElement('li');
-            li.textContent = product;
-            cart.appendChild(li);
+        // Function to add product to cart
+        function addToCart() {
+            // Add your logic here
+            alert('Product added to cart!');
         }
+
+        // Function to add product to wishlist
+        function addToWishlist() {
+            // Add your logic here
+            alert('Product added to wishlist!');
+        }
+
+        // Event listeners for tabs
+        document.getElementById('home-tab').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = '<h2>Welcome to Polaroid Store</h2>';
+        });
+
+        document.getElementById('product-tab').addEventListener('click', function() {
+            displayProducts();
+        });
+
+        document.getElementById('wishlist-tab').addEventListener('click', function() {
+            // Add logic to display wishlist
+            const content = document.getElementById('content');
+            content.innerHTML = '<h2>Wishlist</h2>';
+        });
+
+        document.getElementById('cart-tab').addEventListener('click', function() {
+            // Add logic to display shopping cart
+            const content = document.getElementById('content');
+            content.innerHTML = '<h2>Shopping Cart</h2>';
+        });
+
+        document.getElementById('reviews-tab').addEventListener('click', function() {
+            // Add logic to display reviews
+            const content = document.getElementById('content');
+            content.innerHTML = '<h2>Customer Reviews</h2>';
+        });
+
+        document.getElementById('contact-tab').addEventListener('click', function() {
+            // Add logic to display contact form
+            const content = document.getElementById('content');
+            content.innerHTML = '<h2>Contact Us</h2><form>Full Name: <input type="text"><br>Email: <input type="email"><br>Message: <textarea></textarea><br><input type="submit" value="Submit"></form>';
+        });
     </script>
 </body>
 </html>
